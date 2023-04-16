@@ -8,9 +8,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 def admin_home(request):
     return render(request,"admin_templates/home.html")
 
-class CategoriesListView(ListView):
-    model=Categories
-    template_name="admin_templates/category_list.html"
 
 class CategoriesCreate(SuccessMessageMixin,CreateView):
     model=Categories
@@ -18,13 +15,18 @@ class CategoriesCreate(SuccessMessageMixin,CreateView):
     fields="__all__"
     template_name="admin_templates/category_create.html"
 
+class CategoriesListView(ListView):
+    model=Categories
+    template_name="admin_templates/category_list.html"
+
+
 class CategoriesUpdate(SuccessMessageMixin,UpdateView):
     model=Categories
     success_message="Category Updated!"
     fields="__all__"
     template_name="admin_templates/category_update.html"
 
-
+    
 class SubCategoriesListView(ListView):
     model=SubCategories
     template_name="admin_templates/sub_category_list.html"
